@@ -96,7 +96,7 @@ public class MyArrayList {
         return this.usedSize;
     }
     // 清空顺序表
-    public void clear() {//这里只是比较简单的思路而已，如果里面是对象则需要值位 null
+    public void clear() {//这里只是比较简单的思路而已，如果里面是对象则需要置为 null
         this.usedSize = 0;
     }
 
