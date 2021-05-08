@@ -79,27 +79,56 @@ public class SingleLinkedList {
         }
         return false;
     }
+
+    /**
+     * 找到要删除的节点的前一个节点
+     * @param key
+     * @return
+     */
+    public ListNode searchPrev(int key){
+        ListNode prev= this.head;
+        while(prev.next != null){
+            if(prev.next.val == key){
+                return prev;
+            }
+            prev = prev.next;
+        }
+        //没找到要删除的节点时
+        return null;
+    }
     //删除第一次出现关键字为key的节点
     public void remove(int key){
-        ListNode cur = this.head;
-        while(cur != null){
-            if(cur.val == key){
-                if(cur == this.head){
-                    head = cur.next;
-                    cur = null;
-                }else if(cur.next == null){
-
-                }
-            }
+        //如果要删除的是头节点
+        if(this.head.val == key){
+            this.head = this.head.next;
+            return;
         }
+        //找前驱
+        ListNode prev = searchPrev(key);
+        if(prev == null){
+            System.out.println("没有该节点");
+        }else{
+            ListNode del = prev.next;
+            prev.next = del.next;
+        }
+
     }
     //删除所有值为key的节点
     public void removeAllKey(int key){
-        ListNode cur = this.head;
-        while(cur != null){
+        ListNode prev = this.head;
+        ListNode cur = this.head.next;
+        while(cur != null){//头节点遍历不到
             if(cur.val == key){
+                prev.next = cur.next;
+                cur = prev.next;
+            }else{
+                prev = cur;
                 cur = cur.next;
             }
+        }
+        //判断头节点是否也是要删除的节点
+        if(this.head.val == key){
+            this.head = this.head.next;
         }
     }
     //得到单链表的长度
