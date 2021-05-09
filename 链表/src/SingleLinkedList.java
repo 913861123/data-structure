@@ -1,3 +1,4 @@
+import java.util.List;
 
 class ListNode {
     public int val;//值
@@ -151,16 +152,40 @@ public class SingleLinkedList {
         }
         System.out.println();
     }
+    //指定位置打印
+    public  void display2(ListNode head){
+        ListNode cur = head;
+        while(cur != null){
+            System.out.print(cur.val+" ");
+            cur =cur.next;
+        }
+    }
     public void clear(){
         //需要置空的节点
         ListNode cur = this.head;
         //一个一个置空
-        while(cur != null){
+        while (cur != null) {
             ListNode cunNext = cur.next;
             cur.next = null;
             cur = cunNext;
         }
         this.head = null;
+    }
+    public ListNode reverseList(ListNode head) {
+        if(head == null) return null;
+        //只有一个节点
+        if(head.next == null) return head;
+
+        ListNode cur = head;
+        ListNode curNext = head.next;
+        ListNode prev = null;//前驱节点
+        while(cur != null){
+            curNext = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = curNext;
+        }
+        return prev;
     }
 }
 
