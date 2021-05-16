@@ -117,8 +117,12 @@ public class TestLinkedList {
                 //要删除的是头节点
                 if(this.head == cur) {
                     this.head = this.head.next;
+                    //假设全部是要删除的节点
                     if(this.head != null) {
                         this.head.prev = null;
+                    }else {
+                    	//防止内存泄露
+                    	this.last = null;
                     }
                 }else {
                     //尾巴节点和中间的节点两种情况
