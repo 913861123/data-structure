@@ -122,7 +122,7 @@ public class DoubleLinkedList {
                     if(this.first != null) {
                         this.first.prev = null;
                     }else {
-                        //把最后一个节点置空，防止内存泄露
+                        //把最后一个节点置空
                         this.last = null;
                     }
                     this.head.next = this.first;
