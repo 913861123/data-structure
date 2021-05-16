@@ -121,7 +121,7 @@ public class TestLinkedList {
                     if(this.head != null) {
                         this.head.prev = null;
                     }else {
-                    	//防止内存泄露
+                    	//防止最后一个节点不能被回收
                     	this.last = null;
                     }
                 }else {
